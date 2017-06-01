@@ -52,6 +52,11 @@ public class CostDao {
 		return costs;
 	}
 	
+	/**
+	 * 查询总页数
+	 * @param pageSize
+	 * @return
+	 */
 	
 	public int getPageNum(int pageSize){
 		int pageNum = 0;
@@ -63,6 +68,15 @@ public class CostDao {
 			pageNum = count/pageSize +1;
 		}
 		return pageNum;
+	}
+	
+	public int addCost(Cost cost){
+		String sql = "insert into cost() values(?,?,?,?,?,?)";
+		int result = jdbcTemplate.update(sql, new Object[]{cost.getName(),cost.getCostType(),cost.getBaseCost()
+				,cost.getBaseDuration(),cost.getDescr(),cost.getUnitCost()});
+		
+		return result;
+		
 	}
 	
 	

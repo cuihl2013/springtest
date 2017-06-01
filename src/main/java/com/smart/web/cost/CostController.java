@@ -37,8 +37,10 @@ public class CostController {
 	}
 	
 	@RequestMapping("cost_add.html")
-	ModelAndView addCost(){
-		return null;
+	ModelAndView addCost(Cost cost){
+		int r = costService.addCost(cost);
+		
+		return new ModelAndView("cost_list");
 	}
 	
 	

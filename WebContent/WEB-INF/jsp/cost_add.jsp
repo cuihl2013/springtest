@@ -66,25 +66,25 @@
 			<div class="col-md-4 column">
 			<form role="form">
 				<div class="form-group">
-					 <label>资费名称</label><input type="text" name="name" class="form-control" id="" />
+					 <label>资费名称</label><input type="text" name="cost.name" class="form-control" id="" />
 				</div>
 				<div class="form-group">
 					 <label>资费类型</label>
-					 <input type="radio"/><label>包月</label>
-					 <input type="radio"/><label>套餐</label>
-					 <input type="radio"/><label>计时</label>
+					 <input type="radio" name="cost.name" value="0"/><label>包月</label>
+					 <input type="radio" name="cost.name" value="1"/><label>套餐</label>
+					 <input type="radio" name="cost.name" value="2"/><label>计时</label>
 				</div>
 				<div class="form-group">
-					 <label>基本时长</label><input name="baseDuration" type="text" class="form-control" id="" />
+					 <label>基本时长</label><input name="cost.baseDuration" type="text" class="form-control" id="" />
 				</div>
 				<div class="form-group">
-					 <label>基本费用</label><input name="baseCost" type="text" class="form-control" id="" />
+					 <label>基本费用</label><input name="cost.baseCost" type="text" class="form-control" id="" />
 				</div>
 				<div class="form-group">
-					 <label>单位时长</label><input name="unitCost" type="text" class="form-control" id="" />
+					 <label>单位时长</label><input name="cost.unitCost" type="text" class="form-control" id="" />
 				</div>
 				<div class="form-group">
-					 <label>资费说明</label><textarea name="descr" class="form-control" rows="3"></textarea>
+					 <label>资费说明</label><textarea name="cost.descr" class="form-control" rows="3"></textarea>
 				</div>
 				 <button type="submit" class="btn btn-default">保存</button>
 				  <button type="button" class="btn btn-default">取消</button>

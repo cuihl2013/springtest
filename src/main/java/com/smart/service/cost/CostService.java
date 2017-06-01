@@ -26,5 +26,9 @@ public class CostService {
 		return costDao.getPageNum(pageSize);
 	}
 	
+	public int addCost(Cost cost){
+		return costDao.addCost(cost);
+	}
+	
 	
 }
