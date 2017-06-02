@@ -6,10 +6,10 @@
       <class name="springtest.CostTest">
         <methods>
           <include name="springTestContextBeforeTestClass"/>
+          <include name="testaddCost"/>
           <include name="springTestContextPrepareTestInstance"/>
           <include name="springTestContextAfterTestClass"/>
           <include name="springTestContextBeforeTestMethod"/>
-          <include name="testGetPage"/>
           <include name="springTestContextAfterTestMethod"/>
         </methods>
       </class> <!-- springtest.CostTest -->

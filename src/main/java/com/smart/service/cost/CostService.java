@@ -30,5 +30,9 @@ public class CostService {
 		return costDao.addCost(cost);
 	}
 	
+	public boolean checkCostName(String name){
+		return costDao.checkCostName(name) > 0;
+	}
+	
 	
 }

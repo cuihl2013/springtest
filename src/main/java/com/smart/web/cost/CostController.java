@@ -1,13 +1,16 @@
 package com.smart.web.cost;
 
 import java.util.List;
+import java.util.concurrent.Callable;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -36,11 +39,30 @@ public class CostController {
 		return mav;
 	}
 	
-	@RequestMapping("cost_add.html")
+	@RequestMapping("to_add_cost.html")
+	ModelAndView toAddCost(){
+		return new ModelAndView("cost_add");
+	}
+	
+	@RequestMapping(value="cost_add.html", method= RequestMethod.POST)
 	ModelAndView addCost(Cost cost){
-		int r = costService.addCost(cost);
+		System.out.println("cost.name:"+cost.getName());
+		costService.addCost(cost);
+	//	new ModelAndView(viewName, modelName, modelObject);
+		return new ModelAndView("forward:cost_list.html");
+	}
+	
+	@RequestMapping(value = "checkCostName.html", method=RequestMethod.POST)
+	ModelAndView checkCostName(String name){
+		boolean b = costService.checkCostName(name);
+		ModelAndView mav = new ModelAndView();
+		if (b) {
+			mav.addObject(true);
+		}else {
+			mav.addObject(false);
+		}
 		
-		return new ModelAndView("cost_list");
+		return mav;
 	}
 	
 	

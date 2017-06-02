@@ -1,5 +1,6 @@
 package com.smart.dao.cost;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -8,6 +9,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementSetter;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.stereotype.Repository;
 
@@ -20,6 +22,12 @@ public class CostDao {
 	@Autowired
 	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
+	}
+	
+	public int checkCostName(String name){
+		String sql = "select count(*) from cost where name=?";
+		int count = jdbcTemplate.queryForObject(sql,new Object[]{name}, Integer.class);
+		return count;
 	}
 	
 	/**
@@ -71,9 +79,20 @@ public class CostDao {
 	}
 	
 	public int addCost(Cost cost){
-		String sql = "insert into cost() values(?,?,?,?,?,?)";
-		int result = jdbcTemplate.update(sql, new Object[]{cost.getName(),cost.getCostType(),cost.getBaseCost()
-				,cost.getBaseDuration(),cost.getDescr(),cost.getUnitCost()});
+		String sql = "insert into cost values(cost_seq.nextval,?,?,?,?,'1',?,SYSDATE,null,?)";
+		int result = jdbcTemplate.update(sql, new PreparedStatementSetter() {
+			
+			@Override
+			public void setValues(PreparedStatement ps) throws SQLException {
+				ps.setObject(1, cost.getName());
+				ps.setObject(2, cost.getBaseDuration());
+				ps.setObject(3, cost.getBaseCost());
+				ps.setObject(4, cost.getUnitCost());
+				ps.setObject(5, cost.getDescr());
+				ps.setObject(6, cost.getCostType());
+				
+			}
+		});
 		
 		return result;
 		

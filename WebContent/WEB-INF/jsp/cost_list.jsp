@@ -77,7 +77,7 @@
 		
 		</div>
 		<div class="col-md-1 column">
-			 <button type="button" class="btn btn-default" onclick="location.href='cost_add.html';">新增</button>
+			 <button type="button" class="btn btn-default" onclick="location.href='to_add_cost.html';">新增</button>
 		</div>
 		<div class="col-md-1 column">
 		</div>

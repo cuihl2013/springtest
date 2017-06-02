@@ -17,7 +17,7 @@ create table admin_role
  
  
 );
-
+select * from user_sequences
 
 select * from (select c.*, rownum rn from cost c where rownum<5) where rn >3;
 
@@ -31,3 +31,4 @@ select empno,ename,sal
   where rownum <=10
  )
  where rn>5;
+insert into cost values(cost_seq.nextval,'sdfd',3444,222.3d,422d,'0','sd东方大道',sysdate,null,'2');
